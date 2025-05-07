@@ -27,23 +27,15 @@ This repository provides a privacy-preserving framework for classifying YouTube 
 ```bash
 ## 📁 Directory Structure
 OOD-Detection/
-├── DataSet/ # Raw BPS vectors for seen/unseen traffic
+├── DataSet/ # Raw BPS vectors for training
 ├── Seen_Data/ # Processed in-distribution data
-├── Unseen_Data/ # Processed OOD samples
-├── Features_Evaluation/ # Threshold tuning scripts and configs
-├── feature_visualizations/ # Daily performance plots
-├── Results/ # Evaluation outputs (ROC curves, metrics)
-├── Results_Seen/ # Classification logs per day
-├── Threshold_Selection.py # ROC and percentile-based threshold calibration
-├── Threshold_Selection_Test.py
-├── Testing.py # Model inference on seen data
-├── Testing_Unseen.py # Model inference on OOD data
-├── threshold.py # Core thresholding logic
-├── graphs.py # Visualization utilities
+├── Unseen_Data/ # Processed OOD samples for each day
+├── Results/ # Evaluation outputs (graphs, metrics)
+├── Threshold.py # ROC and percentile-based threshold calibration
+├── graphs.py # Visualization utilitie
 ├── metrics.py # Precision, Recall, F1 computation
 ├── data_helpers.py # Feature processing and input prep
 ├── data_extract.py # Converts raw pcap features into BPS vectors
-├── DataDownloader.py # [OPTIONAL] Auto-download trained models
 ├── *.py # Model-specific training/inference scripts
 
 ```
