@@ -1,53 +1,83 @@
 # OOD-Detection
 
-This repository contains the official implementation of the paper:
-
+Code repository for the paper:  
 **"YouTube Video Identification with Out-of-Distribution (OOD) Detection in Encrypted Network Traffic"**  
 _Muhammad B. Sarwar, Syed M. Ahmad, Maheera Amjad, Muhammad U. S. Khan_
 
----
-
-## 📘 Overview
-
-This work proposes a deep learning framework for real-time YouTube video identification from encrypted network traffic, with integrated out-of-distribution (OOD) detection. The framework processes packet metadata (not payloads) to preserve privacy and utilizes hybrid CNN-LSTM architectures combined with custom loss functions and adaptive thresholding.
+Submitted to IEEE Access.
 
 ---
 
-## 📌 Key Features
+## 🔍 Overview
 
-- 📦 **Encrypted Traffic Classification**: No decryption needed—classification is based on metadata like BPS vectors, packet sizes, and inter-arrival timings.
-- 🧠 **Deep Learning Models**: Implements SCNN, SCNN-LSTM, AlexNet, LeNet, and BPS variants.
-- 🎯 **OOD Detection**: Uses percentile- and ROC-based thresholding to flag unknown video classes.
-- ⚙️ **Loss Function Engineering**: Models are trained with combinations of Cross-Entropy and KL Divergence to improve generalization.
-- 📊 **Daily Evaluation**: Models validated over a 14-day dataset of 30 known and 13 unseen YouTube classes.
+This repository provides a privacy-preserving framework for classifying YouTube video streams in encrypted network traffic and detecting previously unseen (out-of-distribution, OOD) traffic. It leverages deep learning architectures—SCNN, SCNN-LSTM, AlexNet, LeNet, and BPS—and applies threshold-based classification to reject unknown classes.
 
 ---
 
-## 🧪 Models
+## 🧠 Core Features
 
-| Model         | Description                                                      |
-|---------------|------------------------------------------------------------------|
-| SCNN          | Sequential CNN with 3 conv layers and dropout                    |
-| SCNN-LSTM     | SCNN + LSTM for temporal modeling of traffic patterns            |
-| AlexNet       | Adapted for 1D convolutions over BPS vectors                     |
-| LeNet         | Simpler convnet baseline                                         |
-| BPS           | Byte-per-second histogram-based model                            |
-
-Each model is trained with:
-- CrossEntropy + KL Divergence
-- CrossEntropy / KL Divergence
-- Combined custom loss
+- **Encrypted Traffic Classification**: Operates on metadata (e.g., BPS vectors, inter-arrival times, packet sizes), not payloads.
+- **Multiple Architectures**: CNN-based and hybrid CNN-LSTM models.
+- **Out-of-Distribution Detection**: Supports ROC and percentile-based thresholding.
+- **Custom Loss Functions**: Combines CrossEntropy with KL divergence for better generalization.
+- **Daily Evaluation**: 14-day dataset covering 30 known and 13 unseen video classes.
 
 ---
-
-## 📁 Project Structure
 
 ```bash
+## 📁 Directory Structure
 OOD-Detection/
-├── data/                   # Input data and preprocessed BPS vectors
-├── models/                 # Model definitions (SCNN, LSTM, etc.)
-├── training/               # Training scripts and loss functions
-├── evaluation/             # Scripts for thresholding and metrics
-├── utils/                  # Helper scripts (e.g., feature extraction, dataset splits)
-├── results/                # Metrics, confusion matrices, and daily performance logs
-└── README.md               # Project documentation
+├── DataSet/ # Raw BPS vectors for seen/unseen traffic
+├── Seen_Data/ # Processed in-distribution data
+├── Unseen_Data/ # Processed OOD samples
+├── Features_Evaluation/ # Threshold tuning scripts and configs
+├── feature_visualizations/ # Daily performance plots
+├── Results/ # Evaluation outputs (ROC curves, metrics)
+├── Results_Seen/ # Classification logs per day
+├── Threshold_Selection.py # ROC and percentile-based threshold calibration
+├── Threshold_Selection_Test.py
+├── Testing.py # Model inference on seen data
+├── Testing_Unseen.py # Model inference on OOD data
+├── threshold.py # Core thresholding logic
+├── graphs.py # Visualization utilities
+├── metrics.py # Precision, Recall, F1 computation
+├── data_helpers.py # Feature processing and input prep
+├── data_extract.py # Converts raw pcap features into BPS vectors
+├── DataDownloader.py # [OPTIONAL] Auto-download trained models
+├── *.py # Model-specific training/inference scripts
+
+```
+
+---
+
+## ⚙️ Setup & Installation
+
+### Requirements
+
+- Python 3.8+
+- PyTorch
+- numpy
+- pandas
+- scikit-learn
+- matplotlib
+- tqdm
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+## 👥 Authors
+1. Muhammad B. Sarwar
+2. Syed M. Ahmad
+3. Maheera Amjad
+4. Muhammad U. S. Khan
+5. Waqar A. Malik
+6. Samee U. Khan
+
+## 📬 Contact
+For questions, reach out to:
+```bash
+msarwar.mscse22sines@student.nust.edu.pk
+```
