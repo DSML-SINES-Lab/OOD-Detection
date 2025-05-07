@@ -2,7 +2,7 @@
 
 Code repository for the paper:  
 **"YouTube Video Identification with Out-of-Distribution (OOD) Detection in Encrypted Network Traffic"**  
-_Muhammad B. Sarwar, Syed M. Ahmad, Maheera Amjad, Muhammad U. S. Khan_
+_Muhammad B. Sarwar, Syed M. Ahmad, Maheera Amjad, Muhammad U. S. Khan, Waqar A. Malik, Samee U. Khan_
 
 Submitted to IEEE Access.
 
